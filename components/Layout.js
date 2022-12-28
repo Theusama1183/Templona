@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
+
 export default function Layout({ title, children }) {
   const router = useRouter();
+  const [show, setShow] = useState(false);
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function Layout({ title, children }) {
         <header className="border-b">
           <nav className="container m-auto flex justify-between">
             <h4 className="text-5xl font-bold p-5">Watchman</h4>
-            <ul className="nav-menu flex justify-between">
+            <ul className="nav-menu hidden justify-between sm:flex">
               <li
                 onClick={() => {
                   router.push("/");
@@ -51,9 +52,62 @@ export default function Layout({ title, children }) {
                 Login
               </li>
             </ul>
+            {show && (
+              <ul className="nav-menu absolute bg-white text-black top-0 left-0 w-full mt-20 sm:hidden block">
+                <li
+                  onClick={() => {
+                    router.push("/");
+                  }}
+                  className="text-lg font-bold p-5"
+                >
+                  Home
+                </li>
+                <li
+                  onClick={() => {
+                    router.push("/products");
+                  }}
+                  className="text-lg font-bold p-5"
+                >
+                  Products
+                </li>
+                <li
+                  onClick={() => {
+                    router.push("/cart");
+                  }}
+                  className="text-lg font-bold p-5"
+                >
+                  Cart
+                </li>
+                <li
+                  onClick={() => {
+                    router.push("/login");
+                  }}
+                  className="text-lg font-bold p-5 "
+                >
+                  Login
+                </li>
+              </ul>
+            )}
+            <div className="humberger sm:hidden flex flex-col justify-center items-center pr-5">
+              <svg
+                onClick={() => setShow(!show)}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4">{children}</main>
+        <main className="">{children}</main>
         <footer className="border-t h-10 flex items-center justify-center">
           <p>Copyright @ 2023 Watchman</p>
         </footer>
