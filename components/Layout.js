@@ -108,8 +108,10 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="">{children}</main>
-        <footer className="border-t h-10 flex items-center justify-center">
-          <p>Copyright @ 2023 Watchman</p>
+        <footer className="border-t h-20 bg-black flex items-center justify-center">
+          <p className="text-2xl font-medium text-white">
+            Copyright @ 2023 Watchman
+          </p>
         </footer>
       </div>
     </>
