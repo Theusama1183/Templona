@@ -80,7 +80,7 @@ const data = {
       brand: "Apple",
       rating: "4.5",
       numReviews: "84",
-      countInStock: "40",
+      countInStock: "0",
       description:
         "Apple Watch 6 Series 8 A healthy leap ahead. Apple Watch Series 8 hardware with globe watchface Your essential companion is now even more powerful. Introducing temperature sensing for deeper insights into women’s health. Crash Detection to get help in an emergency.2 Sleep stages to better understand your sleep. And new ways to train using the enhanced Workout app. The future of health never looked so good.",
     },

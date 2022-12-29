@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import data from "../../utils/data";
+import { Store } from "../../utils/Store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductScreen() {
+  const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
@@ -11,12 +15,46 @@ export default function ProductScreen() {
     return <div>Product Not Found</div>;
   }
 
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      toast.error("Oops! We have no more In stock", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+    if (quantity) {
+      console.log("Added");
+    }
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+  };
   return (
     <Layout title={product.name}>
       <div className="categorySection py-28 h-full">
         <div className="container m-auto mt-4 px-4">
           <div className="bg-white">
             <div className="pt-6">
+              <ToastContainer
+                position="top-left"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <nav aria-label="Breadcrumb">
                 <ol
                   role="list"
@@ -252,14 +290,13 @@ export default function ProductScreen() {
                     <div className="stock mt-9">
                       {product.countInStock > 0 ? "In Stock" : "Unavailble"}
                     </div>
-
-                    <button
-                      type="submit"
-                      className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                      Add to cart
-                    </button>
                   </form>
+                  <button
+                    onClick={addToCartHandler}
+                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
 
