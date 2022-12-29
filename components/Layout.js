@@ -9,7 +9,7 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + " | Templona" : "Templona"}</title>
+        <title>{title ? title + " | Watchman" : "Watchman"}</title>
         <meta name="description" content="Ecommrece Website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
