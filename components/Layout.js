@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Store } from "../utils/Store";
+import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 export default function Layout({ title, children }) {
@@ -23,10 +24,13 @@ export default function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen flex-col justify-between">
-        <header className="border-b">
+        <header className="border-b fixed w-full bg-white z-50">
           <nav className="container m-auto flex justify-between">
-            <h4 className="text-5xl font-bold p-5">Watchman</h4>
-            <ul className="nav-menu hidden justify-between sm:flex">
+            <h4 className="text-5xl font-bold p-5 cursor-pointer">
+              <Link href="/">Watchman</Link>
+            </h4>
+
+            <ul className="nav-menu hidden justify-between mt-3 cursor-pointer sm:flex">
               <li
                 onClick={() => {
                   router.push("/");

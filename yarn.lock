@@ -1313,6 +1313,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+heroicons@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-2.0.13.tgz#c1f65b9a02c5c05f4b51da8edf2413e2494e9005"
+  integrity sha512-INL+CaS5eJ8+kkXc6kz+i/4m6AWYESGpyorDIZDPH281vZWjV/W6coGmXVZdvyYVLIbPx0id4fPbWvCj//MW5A==
+
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
