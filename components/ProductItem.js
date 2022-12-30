@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { Store } from "../utils/Store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CartDrawer from "/components/cart-drawer";
 
 export default function ProductItem({ product }) {
   const { state, dispatch } = useContext(Store);
+  const [showcartdrawer, setShowcartdrawer] = useState(false);
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
@@ -25,10 +27,12 @@ export default function ProductItem({ product }) {
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+    setShowcartdrawer(true);
   };
 
   return (
     <div className="card hover:shadow border ">
+      {showcartdrawer && <CartDrawer />}
       <Link href={`/product/${product.slug}`}>
         <img
           src={product.image}

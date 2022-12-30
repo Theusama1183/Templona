@@ -24,7 +24,7 @@ export default function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen flex-col justify-between">
-        <header className="border-b fixed w-full bg-white z-50">
+        <header className="border-b fixed w-full bg-white z-40">
           <nav className="container m-auto flex justify-between">
             <h4 className="text-5xl font-bold p-5 cursor-pointer">
               <Link href="/">Watchman</Link>

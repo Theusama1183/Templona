@@ -19,7 +19,7 @@ export default function Cart() {
     (a, c) => a + (c.quantity * c.price * 2.5) / 100,
     0
   );
-  const updateCartHandler = (item, qty) => {
+  const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
