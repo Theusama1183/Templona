@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { Store } from "../utils/Store";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductItem({ product }) {
   const { state, dispatch } = useContext(Store);
@@ -12,16 +10,7 @@ export default function ProductItem({ product }) {
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if (product.countInStock < quantity) {
-      toast.error("Oops! We have no more In stock", {
-        position: "top-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error("Oops! We have no more In stock");
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });

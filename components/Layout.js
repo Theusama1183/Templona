@@ -3,10 +3,15 @@ import { useRouter } from "next/router";
 import { Store } from "../utils/Store";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "next-auth/react";
 
 export default function Layout({ title, children }) {
   const router = useRouter();
   const [show, setShow] = useState(false);
+
+  const { status, data: session } = useSession();
 
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
@@ -23,6 +28,7 @@ export default function Layout({ title, children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between">
         <header className="border-b fixed w-full bg-white z-40">
           <nav className="container m-auto flex justify-between">
@@ -47,13 +53,21 @@ export default function Layout({ title, children }) {
               >
                 Products
               </li>
-              <li
-                onClick={() => {
-                  router.push("/login");
-                }}
-                className="text-lg  p-5 "
-              >
-                Login
+              <li className="text-lg p-5 ">
+                {status === "loading" ? (
+                  "loading"
+                ) : session?.user ? (
+                  session.user.name
+                ) : (
+                  <p
+                    className="text-lg"
+                    onClick={() => {
+                      router.push("/login");
+                    }}
+                  >
+                    Login
+                  </p>
+                )}
               </li>
               <li
                 onClick={() => {

@@ -1,9 +1,11 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import Layout from "../components/Layout";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Checkout() {
   const [value, setValue] = useState();
@@ -12,6 +14,7 @@ export default function Checkout() {
   const changeHandler = (value) => {
     setcValue(value);
   };
+
   return (
     <Layout title="Checkout">
       <div className="container m-auto p-10 border rounded-lg mt-40 bg-gray-50">
