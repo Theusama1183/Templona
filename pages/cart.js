@@ -41,7 +41,7 @@ function Cart() {
           <div className="grid md:grid-cols-5 md:gap-5 ">
             <div className="overflow-x-auto md:col-span-3">
               <table className="min-w-full">
-                <thead className="border-b">
+                <thead className="border-b h-12">
                   <tr>
                     <th className="px-5 text-left">Item</th>
                     <th className="px-5 text-right">Quantity</th>
@@ -136,8 +136,8 @@ function Cart() {
               </div>
               <div className="checkoutBtn">
                 <button
-                  onClick={() => router.push("/checkout")}
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  onClick={() => router.push("login?redirect=/checkout")}
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-red-600 py-3 px-8 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                 >
                   Checkout
                 </button>

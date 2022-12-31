@@ -212,7 +212,7 @@ export default function ProductScreen() {
                       <p className="sr-only">4 out of 5 stars</p>
                       <a
                         href="#"
-                        className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                        className="ml-3 text-sm font-medium text-red-600 hover:text-red-500"
                       >
                         {product.numReviews} reviews
                       </a>
@@ -292,7 +292,7 @@ export default function ProductScreen() {
                   </form>
                   <button
                     onClick={addToCartHandler}
-                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-red-600 py-3 px-8 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                   >
                     Add to cart
                   </button>

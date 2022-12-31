@@ -26,7 +26,7 @@ export default function Layout({ title, children }) {
       <div className="flex min-h-screen flex-col justify-between">
         <header className="border-b fixed w-full bg-white z-40">
           <nav className="container m-auto flex justify-between">
-            <h4 className="text-5xl font-bold p-5 cursor-pointer">
+            <h4 className="text-4xl  font-bold p-5 cursor-pointer">
               <Link href="/">Watchman</Link>
             </h4>
 
@@ -35,7 +35,7 @@ export default function Layout({ title, children }) {
                 onClick={() => {
                   router.push("/");
                 }}
-                className="text-lg font-bold p-5"
+                className="text-lg  p-5"
               >
                 Home
               </li>
@@ -43,7 +43,7 @@ export default function Layout({ title, children }) {
                 onClick={() => {
                   router.push("/products");
                 }}
-                className="text-lg font-bold p-5"
+                className="text-lg  p-5"
               >
                 Products
               </li>
@@ -51,7 +51,7 @@ export default function Layout({ title, children }) {
                 onClick={() => {
                   router.push("/login");
                 }}
-                className="text-lg font-bold p-5 "
+                className="text-lg  p-5 "
               >
                 Login
               </li>
@@ -59,7 +59,7 @@ export default function Layout({ title, children }) {
                 onClick={() => {
                   router.push("/cart");
                 }}
-                className="text-lg font-bold p-5 flex items-center"
+                className="text-lg  p-5 flex items-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ export default function Layout({ title, children }) {
                   onClick={() => {
                     router.push("/");
                   }}
-                  className="text-lg font-bold p-5"
+                  className="text-lg p-5"
                 >
                   Home
                 </li>
@@ -97,7 +97,7 @@ export default function Layout({ title, children }) {
                   onClick={() => {
                     router.push("/products");
                   }}
-                  className="text-lg font-bold p-5"
+                  className="text-lg p-5"
                 >
                   Products
                 </li>
@@ -105,7 +105,7 @@ export default function Layout({ title, children }) {
                   onClick={() => {
                     router.push("/cart");
                   }}
-                  className="text-lg font-bold p-5"
+                  className="text-lg p-5"
                 >
                   Cart
                 </li>
@@ -113,7 +113,7 @@ export default function Layout({ title, children }) {
                   onClick={() => {
                     router.push("/login");
                   }}
-                  className="text-lg font-bold p-5 "
+                  className="text-lg p-5 "
                 >
                   Login
                 </li>
