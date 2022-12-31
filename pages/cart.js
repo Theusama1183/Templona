@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import Image from "next/image";
-
-export default function Cart() {
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import dynamic from "next/dynamic";
+function Cart() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -20,9 +22,13 @@ export default function Cart() {
     0
   );
   const updateCartHandler = async (item, qty) => {
-    const quantity = Number(qty);
+    const quantity = await Number(qty);
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
+    if (item.countInStock < quantity) {
+      return alert("No more in Stock");
+    }
   };
+
   return (
     <Layout title="Cart">
       <div className="container m-auto px-4 mt-40">
@@ -46,7 +52,7 @@ export default function Cart() {
                 <tbody>
                   {cartItems.map((item) => (
                     <tr key={item.slug} className="border-b border-t h-44">
-                      <td>
+                      <td className="itemtd">
                         <Link href={`/product/${item.slug}`}>
                           <div className="flex items-center">
                             <Image
@@ -59,22 +65,21 @@ export default function Cart() {
                           </div>
                         </Link>
                       </td>
-                      <td className="p-5 text-right">
-                        <select
-                          value={item.quantity}
+                      <td className="p-5 text-right quantitytd">
+                        <input
                           onChange={(e) =>
                             updateCartHandler(item, e.target.value)
                           }
-                        >
-                          {[...Array(item.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </select>
+                          type="number"
+                          min="1"
+                          max={item.countInStock}
+                          name=""
+                          className="block  rounded-md border-gray-300 pl-7 py-4 focus-visible:outline-none sm:text-sm"
+                          value={item.quantity}
+                        />
                       </td>
-                      <td className="p-5 text-right">${item.price}</td>
-                      <td className="p-5 text-center">
+                      <td className="p-5 text-right pricetd">${item.price}</td>
+                      <td className="p-5 text-center actiontd">
                         <button onClick={() => removeItemHandler(item)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -144,3 +149,5 @@ export default function Cart() {
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });

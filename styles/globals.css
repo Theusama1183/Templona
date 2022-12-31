@@ -30,3 +30,21 @@ a {
 .priceCard {
   background-color: #f9fafc;
 }
+input#pnumber {
+  padding: 16px 27px 16px 27px;
+}
+.css-13cymwt-control {
+  padding: 7px 0px 7px 0px;
+}
+
+.itemtd {
+  width: 60%;
+}
+.pricetd,
+.quantitytd,
+.actiontd {
+  width: 10%;
+}
+.PhoneInputCountry {
+  padding: 20px;
+}
